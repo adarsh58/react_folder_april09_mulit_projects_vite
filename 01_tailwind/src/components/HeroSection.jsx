@@ -6,10 +6,10 @@ const HeroSection = () => {
     <div className="flex justify-between align-items gap-2 bg-black text-white p-2 h-150 w-full">
       {/* Left section */}
       <div className="w-1/2 p-4 flex flex-col justify-start items-start gap-4">
-        <h1 className='text-4xl font-family-["Poppins", "sans-serif"]'>
+        <h1 className='text-3xl font-family-["Poppins", "sans-serif"]'>
           Hello!
         </h1>
-        <h2 className="text-3xl">
+        <h2 className='text-3xl font-family-["Poppins", "sans-serif"]'>
           I am <span className="text-amber-700">Adarsh Sharma</span>
         </h2>
         <h2 className="text-2xl text-amber-700">Full stack developer</h2>

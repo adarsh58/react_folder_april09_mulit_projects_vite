@@ -4,7 +4,7 @@ import SkillBar from "./SkillBar";
 const AboutMe = () => {
   return (
     <section>
-      <div className="flex flex-col justify-start gap-2  bg-black text-white p-2 h-fit w-full">
+      <div className="flex flex-col justify-start gap-2  bg-black text-white p-2 h-fit w-full rounded-2xl">
         <h2 className="flex justify-center text-3xl w-full">
           About <span className="text-amber-700"> Me</span>
         </h2>

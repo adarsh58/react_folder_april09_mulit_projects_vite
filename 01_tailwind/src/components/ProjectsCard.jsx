@@ -1,4 +1,4 @@
-import React from "react";
+import { ShoppingCart,Code,NotebookPen } from "lucide-react";
 import Card from "./Card";
 
 const ProjectsCard = () => {
@@ -9,6 +9,7 @@ const ProjectsCard = () => {
       tech: ["MERN"],
       description:
         "Learn and implement MERN stack on the go with ready-to-use concepts.",
+        img: <Code color="black" size={50}/>,
     },
     {
       id: 2,
@@ -16,6 +17,7 @@ const ProjectsCard = () => {
       tech: ["React", "IndexedDB", "CSS"],
       description:
         "Efficient data management across pages using IndexedDB with smooth UI animations.",
+         img: <ShoppingCart  color="black" size={50}/>,
     },
     {
       id: 3,
@@ -23,12 +25,13 @@ const ProjectsCard = () => {
       tech: ["React", "MERN", "JWT"],
       description:
         "Used Context API, React hooks, JWT authentication, middleware, and localStorage for a full-stack notes app.",
+         img: <NotebookPen  color="black" size={50}/>,
     },
   ];
 
   return (
-    <div className="flex flex-col justify-center items-center w-full h-full">
-      <div className=" flex justify-center">
+    <div className="flex flex-col justify-center items-center w-full h-full ">
+      <div className=" flex justify-center mt-5 mb-5">
         <h2 className="flex justify-center text-2xl w-full">
           My <span className="text-amber-700"> Projects</span>
         </h2>
@@ -40,6 +43,7 @@ const ProjectsCard = () => {
               name={project.name}
               tech={project.tech}
               description={project.description}
+              img={project.img}
             />
           </div>
         ))}

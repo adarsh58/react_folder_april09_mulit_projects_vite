@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Beaker, BookOpen, Layers, Zap, FunctionSquare, Layout, Clock, Database } from 'lucide-react';
+import { Beaker, BookOpen, Layers, Zap, FunctionSquare, Layout, Clock, Database, Server, Code, Terminal, Globe, Cpu, Share2 } from 'lucide-react';
 import UseStateDemo from './components/hooks/UseStateDemo';
 import UseEffectDemo from './components/hooks/UseEffectDemo';
 import UseContextDemo from './components/hooks/UseContextDemo';
@@ -15,6 +15,15 @@ import UseTransitionDemo from './components/hooks/UseTransitionDemo';
 import UseIdDemo from './components/hooks/UseIdDemo';
 import UseSyncExternalStoreDemo from './components/hooks/UseSyncExternalStoreDemo';
 import UseInsertionEffectDemo from './components/hooks/UseInsertionEffectDemo';
+import ReactPatternsDemo from './components/ReactPatternsDemo';
+
+// Backend & C#
+import ExpressApiDemo from './components/ExpressApiDemo';
+import CSharpCollectionsDemo from './components/CSharpCollectionsDemo';
+import CSharpAdvancedDemo from './components/CSharpAdvancedDemo';
+
+// CSS
+import CssPlayground from './components/CssPlayground';
 
 // Redux
 import ReduxDemo from './components/ReduxDemo';
@@ -34,6 +43,7 @@ import GeneratorsDemo from './components/js_concepts/GeneratorsDemo';
 import ProxiesDemo from './components/js_concepts/ProxiesDemo';
 import IntersectionObserverDemo from './components/js_concepts/IntersectionObserverDemo';
 import StorageApiDemo from './components/js_concepts/StorageApiDemo';
+import WebWorkersDemo from './components/js_concepts/WebWorkersDemo';
 
 const hooksList = [
   { id: 'useState', name: 'useState', icon: <Layers size={18} /> },
@@ -53,6 +63,23 @@ const hooksList = [
   { id: 'useInsertionEffect', name: 'useInsertionEffect', icon: <Layout size={18} /> },
 ];
 
+const reactPatternsList = [
+  { id: 'react_patterns', name: 'Core Patterns', icon: <Share2 size={18} /> },
+];
+
+const backendList = [
+  { id: 'express', name: 'Express JS APIs', icon: <Server size={18} /> },
+];
+
+const cssList = [
+  { id: 'css_playground', name: 'CSS Playground', icon: <Layout size={18} /> },
+];
+
+const csharpList = [
+  { id: 'csharp_collections', name: 'C# Collections', icon: <Terminal size={18} /> },
+  { id: 'csharp_advanced', name: '.NET Core Advanced', icon: <Code size={18} /> },
+];
+
 const jsConceptsList = [
   { id: 'closures', name: 'Closures', icon: <FunctionSquare size={18} /> },
   { id: 'hoisting', name: 'Hoisting', icon: <Layers size={18} /> },
@@ -68,6 +95,7 @@ const jsConceptsList = [
   { id: 'proxies', name: 'Proxies', icon: <Beaker size={18} /> },
   { id: 'intersectionObserver', name: 'Intersection Observer', icon: <Layers size={18} /> },
   { id: 'storageApi', name: 'Storage API', icon: <Database size={18} /> },
+  { id: 'webWorkers', name: 'Web Workers', icon: <Cpu size={18} /> },
 ];
 
 const advancedList = [
@@ -96,6 +124,19 @@ function App() {
       case 'useSyncExternalStore': return <UseSyncExternalStoreDemo />;
       case 'useInsertionEffect': return <UseInsertionEffectDemo />;
       
+      // React Patterns
+      case 'react_patterns': return <ReactPatternsDemo />;
+      
+      // Backend
+      case 'express': return <ExpressApiDemo />;
+      
+      // CSS
+      case 'css_playground': return <CssPlayground />;
+      
+      // C#
+      case 'csharp_collections': return <CSharpCollectionsDemo />;
+      case 'csharp_advanced': return <CSharpAdvancedDemo />;
+
       // Redux
       case 'redux': return <ReduxDemo />;
       
@@ -114,6 +155,7 @@ function App() {
       case 'proxies': return <ProxiesDemo />;
       case 'intersectionObserver': return <IntersectionObserverDemo />;
       case 'storageApi': return <StorageApiDemo />;
+      case 'webWorkers': return <WebWorkersDemo />;
       default: return <UseStateDemo />;
     }
   };
@@ -123,11 +165,67 @@ function App() {
       {/* Sidebar Navigation */}
       <aside className="sidebar">
         <div className="sidebar-header">
-          <h1>React Masterclass</h1>
-          <p>Interactive Guide</p>
+          <h1>Dev Cheat Sheet</h1>
+          <p>The Ultimate Guide</p>
         </div>
         
         <div className="sidebar-nav">
+          <div className="nav-section">
+            <h2 className="nav-section-title">Backend & Fullstack</h2>
+            {backendList.map((item) => (
+              <div 
+                key={item.id} 
+                className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
+                onClick={() => setActiveTab(item.id)}
+              >
+                <span style={{ marginRight: '12px', display: 'flex' }}>{item.icon}</span>
+                {item.name}
+              </div>
+            ))}
+          </div>
+
+          <div className="nav-section">
+            <h2 className="nav-section-title">Design & Layout</h2>
+            {cssList.map((item) => (
+              <div 
+                key={item.id} 
+                className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
+                onClick={() => setActiveTab(item.id)}
+              >
+                <span style={{ marginRight: '12px', display: 'flex' }}>{item.icon}</span>
+                {item.name}
+              </div>
+            ))}
+          </div>
+
+          <div className="nav-section">
+            <h2 className="nav-section-title">C# & .NET Core</h2>
+            {csharpList.map((item) => (
+              <div 
+                key={item.id} 
+                className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
+                onClick={() => setActiveTab(item.id)}
+              >
+                <span style={{ marginRight: '12px', display: 'flex' }}>{item.icon}</span>
+                {item.name}
+              </div>
+            ))}
+          </div>
+
+          <div className="nav-section">
+            <h2 className="nav-section-title">React Patterns</h2>
+            {reactPatternsList.map((item) => (
+              <div 
+                key={item.id} 
+                className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
+                onClick={() => setActiveTab(item.id)}
+              >
+                <span style={{ marginRight: '12px', display: 'flex' }}>{item.icon}</span>
+                {item.name}
+              </div>
+            ))}
+          </div>
+
           <div className="nav-section">
             <h2 className="nav-section-title">React Hooks</h2>
             {hooksList.map((hook) => (
@@ -143,7 +241,7 @@ function App() {
           </div>
 
           <div className="nav-section">
-            <h2 className="nav-section-title">Advanced State</h2>
+            <h2 className="nav-section-title">State Management</h2>
             {advancedList.map((item) => (
               <div 
                 key={item.id} 
@@ -157,7 +255,7 @@ function App() {
           </div>
           
           <div className="nav-section">
-            <h2 className="nav-section-title">JS Concepts</h2>
+            <h2 className="nav-section-title">JS Fundamentals</h2>
             {jsConceptsList.map((concept) => (
               <div 
                 key={concept.id} 

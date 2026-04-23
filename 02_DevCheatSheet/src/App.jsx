@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Beaker, BookOpen, Layers, Zap, FunctionSquare, Layout, Clock, Database, Server, Code, Terminal, Globe, Cpu, Share2 } from 'lucide-react';
+import { Beaker, BookOpen, Layers, Zap, FunctionSquare, Layout, Clock, Database, Server, Code, Terminal, Globe, Cpu, Share2, Menu, X } from 'lucide-react';
 import UseStateDemo from './components/hooks/UseStateDemo';
 import UseEffectDemo from './components/hooks/UseEffectDemo';
 import UseContextDemo from './components/hooks/UseContextDemo';
@@ -104,6 +104,7 @@ const advancedList = [
 
 function App() {
   const [activeTab, setActiveTab] = useState('useState');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -161,9 +162,20 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className={`app-container ${isSidebarOpen ? 'sidebar-open' : ''}`}>
+      {/* Mobile Header */}
+      <div className="mobile-header">
+        <div className="mobile-logo">
+          <Code className="text-primary" />
+          <span>DevCheatSheet</span>
+        </div>
+        <button className="menu-toggle" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+          {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
       {/* Sidebar Navigation */}
-      <aside className="sidebar">
+      <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
           <h1>Dev Cheat Sheet</h1>
           <p>The Ultimate Guide</p>
@@ -176,7 +188,10 @@ function App() {
               <div 
                 key={item.id} 
                 className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
-                onClick={() => setActiveTab(item.id)}
+                onClick={() => {
+                  setActiveTab(item.id);
+                  setIsSidebarOpen(false);
+                }}
               >
                 <span style={{ marginRight: '12px', display: 'flex' }}>{item.icon}</span>
                 {item.name}
@@ -190,7 +205,10 @@ function App() {
               <div 
                 key={item.id} 
                 className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
-                onClick={() => setActiveTab(item.id)}
+                onClick={() => {
+                  setActiveTab(item.id);
+                  setIsSidebarOpen(false);
+                }}
               >
                 <span style={{ marginRight: '12px', display: 'flex' }}>{item.icon}</span>
                 {item.name}
@@ -204,7 +222,10 @@ function App() {
               <div 
                 key={item.id} 
                 className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
-                onClick={() => setActiveTab(item.id)}
+                onClick={() => {
+                  setActiveTab(item.id);
+                  setIsSidebarOpen(false);
+                }}
               >
                 <span style={{ marginRight: '12px', display: 'flex' }}>{item.icon}</span>
                 {item.name}
@@ -218,7 +239,10 @@ function App() {
               <div 
                 key={item.id} 
                 className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
-                onClick={() => setActiveTab(item.id)}
+                onClick={() => {
+                  setActiveTab(item.id);
+                  setIsSidebarOpen(false);
+                }}
               >
                 <span style={{ marginRight: '12px', display: 'flex' }}>{item.icon}</span>
                 {item.name}
@@ -246,7 +270,10 @@ function App() {
               <div 
                 key={item.id} 
                 className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
-                onClick={() => setActiveTab(item.id)}
+                onClick={() => {
+                  setActiveTab(item.id);
+                  setIsSidebarOpen(false);
+                }}
               >
                 <span style={{ marginRight: '12px', display: 'flex' }}>{item.icon}</span>
                 {item.name}

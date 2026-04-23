@@ -454,21 +454,105 @@ body {
 .edit-btn:hover { background: var(--primary); color: white; }
 .delete-btn:hover { background: var(--danger); color: white; }
 
-@media (max-width: 1024px) {
-  .sidebar { width: 260px; }
-  .main-content { padding: 40px; }
+/* Mobile Responsive Styles */
+.mobile-header {
+  display: none;
+  padding: 16px 24px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-@media (max-width: 768px) {
-  .app-container { flex-direction: column; }
+.mobile-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #818cf8 0%, #d946ef 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.menu-toggle {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+@media (max-width: 1024px) {
+  .mobile-header { display: flex; }
+  
   .sidebar {
-    width: 100%;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
+    position: fixed;
+    left: -100%;
+    top: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 2000;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 20px 0 50px rgba(0,0,0,0.5);
   }
-  .sidebar-header { padding: 16px 20px; }
-  .sidebar-nav { display: none; } /* Could add a mobile menu */
-  .main-content { padding: 24px; }
-  .title { font-size: 2.5rem; }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 24px;
+    width: 100%;
+  }
+
+  .app-container.sidebar-open::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1500;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .grid-2, .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .title { font-size: 2rem; }
+  .header-section { margin-bottom: 30px; }
+  
+  .step-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .step-code-section {
+    height: auto;
+    max-height: 500px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .main-content { padding: 16px; }
+  .card, .demo-section { padding: 20px; }
+  .title { font-size: 1.75rem; }
 }
